@@ -1,1 +1,0 @@
-web: gunicorn bbb_dashbrd.app:app
