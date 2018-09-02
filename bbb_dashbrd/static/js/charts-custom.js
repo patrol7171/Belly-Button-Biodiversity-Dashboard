@@ -1,5 +1,4 @@
 
-
 	function updateMetaData(data) {
 		var PANEL = document.getElementById("sample-metadata");
 		PANEL.innerHTML = '';

@@ -1,12 +1,10 @@
-/*
-    DEMO STYLE
-*/
+
+
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 
 body {
     font-family: 'Poppins', sans-serif;
-    /* background: #fafafa; */
 	background: #fff;
 }
 
@@ -23,7 +21,7 @@ a, a:hover, a:focus {
     text-decoration: none;
     transition: all 0.3s;
 }
-
+	
 .navbar {
     padding: 15px 10px;
     background: #fafafa;
@@ -33,11 +31,11 @@ a, a:hover, a:focus {
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-btn {
+.navbar-btn, .btn, .btn-info {
     box-shadow: none;
     outline: none !important;
     border: none;
-	background: #7386D5;
+	background: #7386D5 !important;
 }
 
 .line {
@@ -73,7 +71,7 @@ i, span {
     text-align: center;
 }
 
-#sidebar.active .sidebar-header h3, #sidebar.active .CTAs {
+#sidebar.active .sidebar-header h4, #sidebar.active .CTAs {
     display: none;
 }
 
