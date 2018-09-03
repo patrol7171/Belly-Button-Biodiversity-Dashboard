@@ -32,40 +32,48 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Database Setup
 #################################################
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///belly_button_biodiversity.sqlite"
-SQLAlchemy(app)
-
+db = SQLAlchemy(app)
 engine = create_engine("sqlite:///belly_button_biodiversity.sqlite", pool_recycle=3600)
-conn = engine.connect()
-Base = automap_base()
-Base.prepare(engine, reflect=True)
-Base.classes.keys()
 
-inspector = inspect(engine)
+db.reflect()
+db.Model = automap_base()
+db.Model.prepare(db.engine, reflect=True)
+
+# Base = automap_base()
+# Base.classes.keys()
+# Base.prepare(engine, reflect=True)
+
+inspector = inspect(db.engine)
 inspector.get_table_names()
 inspector.get_columns("otu")
 inspector.get_columns("samples_metadata")
 inspector.get_columns("samples")
 
-
-class OTU(Base):
+class OTU(db.Model):
     __tablename__ = "otu"
     __table_args__ = {"extend_existing":True}
-    otu_id = Column(Text,primary_key=True)
+    otu_id = Column(Text, primary_key=True)
 
-class Samples(Base):
+
+class Samples(db.Model):
     __tablename__ = "samples"
     __table_args__ = {"extend_existing":True}
     otu_id = Column(Text,primary_key=True)
 
-class Samples_Metadata(Base):
+class Samples_Metadata(db.Model):
     __tablename__ = "samples_metadata"
     __table_args__ = {"extend_existing":True}
     SAMPLEID = Column(Text,primary_key=True)
 
-Base.prepare()
-session = Session(engine)
-	
+session = Session(db.engine)
+conn = engine.connect()	
 
+# Create database tables
+@app.before_first_request
+def setup():
+    db.create_all()	
+	
+	
 #################################################
 # Flask Routes
 #################################################

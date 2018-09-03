@@ -1,1 +1,1 @@
-web: gunicorn bbb_dashbrd.app:app
+web: gunicorn bbb_dashboard.app:app
