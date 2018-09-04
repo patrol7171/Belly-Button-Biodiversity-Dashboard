@@ -33,7 +33,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 #################################################
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///belly_button_biodiversity.sqlite"
 engine = create_engine("sqlite:///belly_button_biodiversity.sqlite", pool_recycle=3600)
-SQLAlchemy(app)
+db = SQLAlchemy(app)
 
 Base = automap_base()
 Base.classes.keys()
