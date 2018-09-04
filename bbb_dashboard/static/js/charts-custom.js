@@ -32,7 +32,7 @@
 			}
 		}];
 		var BUBBLE = document.getElementById('bubble');
-		Plotly.plot(BUBBLE, bubbleData, bubbleLayout);
+		Plotly.plot(BUBBLE, bubbleData, bubbleLayout, {displayModeBar: false});
 		var pieData = [{
 			values: sampleData[0]['sample_values'].slice(0, 10),
 			labels: sampleData[0]['otu_ids'].slice(0, 10),
@@ -45,7 +45,7 @@
 			title: '<b>Top Ten OTUs</b>',
 		};
 		var PIE = document.getElementById('pie');
-		Plotly.plot(PIE, pieData, pieLayout);
+		Plotly.plot(PIE, pieData, pieLayout,{displayModeBar: false});
 	}
 	
 	function updateCharts(sampleData, otuData) {
@@ -187,6 +187,6 @@
 		};
 
 		var GAUGE = document.getElementById('gauge');
-		Plotly.newPlot(GAUGE, data, layout);
+		Plotly.newPlot(GAUGE, data, layout, {displayModeBar: false});
 	}
 
