@@ -108,7 +108,7 @@ def sample_names():
 @app.route('/otu')
 def otu_describe():
     sql = "select * from OTU"
-    df = pd.read_sql(sql, engine)
+    df = pd.read_sql_query(sql, db.session.bind)
     df_arr = df.lowest_taxonomic_unit_found.unique()
     descriptions = df_arr.tolist()
     return jsonify(descriptions)
@@ -143,7 +143,7 @@ def samples(sample):
 def wfreq(sample):
 	s = sample.replace("BB_","")
 	sql = 'select WFREQ from Samples_Metadata where SAMPLEID = ' + s
-	df = pd.read_sql_query(sql, engine)
+	df = pd.read_sql_query(sql, db.session.bind)
 	freq_dict = df.to_dict(orient='list')
 	results = freq_dict['WFREQ']
 	return jsonify(results)
