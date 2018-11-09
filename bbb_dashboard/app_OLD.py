@@ -34,13 +34,12 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///belly_button_biodiversity.sqlite"
 engine = create_engine("sqlite:///belly_button_biodiversity.sqlite", pool_recycle=3600)
 db = SQLAlchemy(app)
-db.Model.metadata.reflect(bind=db.engine)
 
 Base = automap_base()
 Base.classes.keys()
-Base.prepare(db.engine, reflect=True)
+Base.prepare(engine, reflect=True)
 
-inspector = inspect(db.engine)
+inspector = inspect(engine)
 inspector.get_table_names()
 inspector.get_columns("otu")
 inspector.get_columns("samples_metadata")
@@ -50,18 +49,18 @@ inspector.get_columns("samples")
 class OTU(Base):
     __tablename__ = "otu"
     __table_args__ = {"extend_existing":True}
-    otu_id = db.Column(Text, primary_key=True)
+    otu_id = Column(Text, primary_key=True)
 
 
 class Samples(Base):
     __tablename__ = "samples"
     __table_args__ = {"extend_existing":True}
-    otu_id = db.Column(Text,primary_key=True)
+    otu_id = Column(Text,primary_key=True)
 
 class Samples_Metadata(Base):
     __tablename__ = "samples_metadata"
     __table_args__ = {"extend_existing":True}
-    SAMPLEID = db.Column(Text,primary_key=True)
+    SAMPLEID = Column(Text,primary_key=True)
 	
 
 # Save references to each table
@@ -69,8 +68,8 @@ class Samples_Metadata(Base):
 # OTU = Base.classes.otu
 # Samples = Base.classes.samples	
 
-session = Session(db.engine)
-conn = db.engine.connect()	
+session = Session(engine)
+conn = engine.connect()	
 db.create_all()
 
 	
