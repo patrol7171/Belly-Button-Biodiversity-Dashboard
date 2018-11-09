@@ -51,17 +51,27 @@ class OTU(Base):
     __tablename__ = "otu"
     __table_args__ = {"extend_existing":True}
     otu_id = db.Column(Text, primary_key=True)
+	
+    def __repr__(self):
+        return '<otu %r>' % (self.name)
 
 
 class Samples(Base):
     __tablename__ = "samples"
     __table_args__ = {"extend_existing":True}
     otu_id = db.Column(Text,primary_key=True)
+	
+    def __repr__(self):
+        return '<samples %r>' % (self.name)
 
+	
 class Samples_Metadata(Base):
     __tablename__ = "samples_metadata"
     __table_args__ = {"extend_existing":True}
     SAMPLEID = db.Column(Text,primary_key=True)
+	
+    def __repr__(self):
+        return '<samples_metadata %r>' % (self.name)
 	
 
 # Save references to each table
