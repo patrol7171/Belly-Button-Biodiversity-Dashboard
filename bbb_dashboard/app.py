@@ -76,11 +76,6 @@ class Samples_Metadata(Base):
         return '<samples_metadata %r>' % (self.name)
 	
 
-# Save references to each table
-# Samples_Metadata = Base.classes.samples_metadata
-# OTU = Base.classes.otu
-# Samples = Base.classes.samples	
-
 session = Session(db.engine)
 conn = db.engine.connect()	
 db.create_all()
@@ -94,19 +89,7 @@ def home():
 	 # """Render Home Page"""
 	return render_template("index.html")
 
-
-@app.route("/charts1")
-def tables():
-	 # """Render Sample Tables page"""
-	return render_template("charts1.html")
-
-
-@app.route("/charts2")
-def charts():
-	 # """Render Sample Charts Page"""
-	return render_template("charts2.html")
-
-
+	
 @app.route("/names")
 def sample_names():
     names = inspector.get_columns('samples')
