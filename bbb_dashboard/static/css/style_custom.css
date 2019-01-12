@@ -35,7 +35,7 @@ a, a:hover, a:focus {
     box-shadow: none;
     outline: none !important;
     border: none;
-	background: #7386D5 !important;
+	background: #3F8EB1 !important;
 }
 
 .line {
@@ -60,7 +60,7 @@ i, span {
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: #7386D5;
+    background: #3F8EB1;
     color: #fff;
     transition: all 0.3s;
 }
@@ -111,7 +111,7 @@ i, span {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #6d7fcc;
+    background: #3B85A6;
 }
 
 #sidebar .sidebar-header strong {
@@ -130,7 +130,7 @@ i, span {
     display: block;
 }
 #sidebar ul li a:hover {
-    color: #7386D5;
+    color: #3F8EB1;
     background: #fff;
 }
 #sidebar ul li a i {
@@ -139,7 +139,7 @@ i, span {
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
     color: #fff;
-    background: #6d7fcc;
+    background: #3B85A6;
 }
 
 
@@ -170,7 +170,7 @@ a[aria-expanded="true"]::before {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #6d7fcc;
+    background: #3B85A6;
 }
 
 ul.CTAs {
@@ -187,11 +187,11 @@ ul.CTAs a {
 
 a.download {
     background: #fff;
-    color: #7386D5;
+    color: #3F8EB1;
 }
 
 a.article, a.article:hover {
-    background: #6d7fcc !important;
+    background: #3B85A6 !important;
     color: #fff !important;
 }
 
